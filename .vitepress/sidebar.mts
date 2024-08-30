@@ -24,10 +24,12 @@ export function getDirectoryStructure(dir: string): DirectoryStructure[] {
       files.forEach((file) => {
         if (file.isFile()) {
           const fileNameWithoutExt = path.parse(file.name).name;
-          items.push({
-            text: fileNameWithoutExt,
-            link: `/${path.relative('', dir)}/${subdir.name}/${fileNameWithoutExt}`,
-          });
+          if (fileNameWithoutExt !== 'index') {
+            items.push({
+              text: fileNameWithoutExt,
+              link: `/${path.relative('', dir)}/${subdir.name}/${fileNameWithoutExt}`,
+            });
+          }
         }
       });
 

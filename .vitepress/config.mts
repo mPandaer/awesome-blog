@@ -10,7 +10,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: '每月计划', link: '/monthly' }
+      { text: 'Blog', link: '/blog' }
     ],
 
     sidebar: [...getDirectoryStructure("blog")
