@@ -13,30 +13,14 @@ export default defineConfig({
       { text: 'Blog', link: '/blog' }
     ],
 
-    sidebar: [...getDirectoryStructure("blog")
-      // {
-      //   text: 'Examples',
-      //   items: [
-      //     { text: 'Markdown Examples', link: '/markdown-examples' },
-      //     { text: 'Runtime API Examples', link: '/api-examples' }
-      //   ]
-      // },
-      // // {
-      // //   text: '技术模版',
-      // //   items: [
-      // //     { text: 'Template', link: '/template' },
-      // //   ]
-      // // },
-      // // {
-      // //   text: '每月计划',
-      // //   items: [
-      // //     { text: '每月计划', link: '/monthly' },
-      // //   ]
-      // // }
-    ],
+    sidebar: [...getDirectoryStructure("blog")],
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/mPandaer' }
-    ]
+    ],
+    outline: {
+      label:"Outline",
+      level:"deep"
+    }
   }
 })
