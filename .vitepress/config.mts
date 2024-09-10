@@ -19,7 +19,7 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/mPandaer' }
     ],
     outline: {
-      label:"Outline",
+      label:"大纲",
       level:[1,6]
     }
   }
