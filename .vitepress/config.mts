@@ -20,7 +20,7 @@ export default defineConfig({
     ],
     outline: {
       label:"Outline",
-      level:"deep"
+      level:[1,6]
     }
   }
 })
