@@ -21,6 +21,7 @@ export default defineConfig({
     outline: {
       label:"大纲",
       level:[1,6]
-    }
+    },
+    logo: ""
   }
 })
