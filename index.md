@@ -10,9 +10,6 @@ hero:
     - theme: brand
       text: 技术博客
       link: /blog
-    - theme: alt
-      text: 每月计划
-      link: /blog/月度计划
 ---
 
 # Hi, Here
