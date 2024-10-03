@@ -16,7 +16,7 @@ export default defineConfig({
     sidebar: [...getDirectoryStructure("blog")],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/mPandaer' }
+      { icon: 'github', link: 'https://github.com/mPandaer/awesome-blog' }
     ],
     outline: {
       label:"大纲",
