@@ -23,5 +23,8 @@ export default defineConfig({
       level:[1,6]
     },
     logo: ""
-  }
+  },
+  head: [
+    ["link", { rel: "icon", href: "/favicon.ico" }]
+  ]
 })
