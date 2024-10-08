@@ -8,7 +8,7 @@ hero:
   tagline: "梦开始的地方"
   actions:
     - theme: brand
-      text: 技术博客
+      text: 全部文章
       link: /blog
 ---
 

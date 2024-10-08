@@ -1,5 +1,10 @@
 import { defineConfig } from 'vitepress'
-import { getDirectoryStructure } from './sidebar.mts'
+import { getDirectoryStructure } from './sidebar.mjs'
+import { navBar } from './navbar.mjs'
+import { writeAllFileItems2BlogIndex } from './blog.mjs'
+
+// 将全部文章写入到 blog/index.md
+writeAllFileItems2BlogIndex()
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -7,13 +12,12 @@ export default defineConfig({
   title: "Pandaer杂货铺",
   description: "不一样的技术杂货",
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Blog', link: '/blog' }
-    ],
 
-    sidebar: [...getDirectoryStructure("blog")],
+    siteTitle:"Pandaer 杂货铺",
+    // https://vitepress.dev/reference/default-theme-config
+    nav: navBar,
+
+    sidebar: getDirectoryStructure("blog"),
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/mPandaer/awesome-blog' }
@@ -23,8 +27,5 @@ export default defineConfig({
       level:[1,6]
     },
     logo: ""
-  },
-  head: [
-    ["link", { rel: "icon", href: "/favicon.ico" }]
-  ]
+  }
 })
