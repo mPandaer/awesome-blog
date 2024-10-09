@@ -11,6 +11,15 @@ export default defineConfig({
   base:"/",
   title: "Pandaer杂货铺",
   description: "不一样的技术杂货",
+  head:[
+    [
+      'link',
+      {
+          rel: 'icon',
+          href: '/favicon.ico',
+      },
+  ]
+  ],
   themeConfig: {
 
     siteTitle:"Pandaer 杂货铺",
