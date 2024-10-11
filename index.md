@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 全部文章
-      link: /blog
+      link: /blog/
 ---
 
 # 你好，道友！
