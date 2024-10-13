@@ -24,3 +24,17 @@ hero:
 >
 > - 完善[数据结构和算法的专栏](/blog/算法与数据结构/00前言)
 
+
+
+
+
+
+
+
+
+# 友情推荐
+
+- https://jerrylingj.top/ 算法大佬的博客
+- https://blog-chun.cn/ 独立开发大佬的博客
+- http://www.xujc.cc/  后端大佬的博客
+
