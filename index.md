@@ -3,13 +3,13 @@
 layout: home
 
 hero:
-  name: "Pandaer 杂货铺"
+  name: "知之"
   text: ""
-  tagline: "梦开始的地方"
+  tagline: "物有本末，事有终始，知所先后，则近道矣。"
   actions:
     - theme: brand
       text: 全部文章
-      link: /blog/
+      link: /blog/all
 ---
 
 # 你好，道友！
@@ -22,7 +22,7 @@ hero:
 
 > [!tip] # 2024-10
 >
-> - 完善[数据结构和算法的专栏](/blog/算法与数据结构/00前言)
+> - 完善[数据结构和算法的专栏](/blog/05算法与数据结构/00前言)
 
 
 

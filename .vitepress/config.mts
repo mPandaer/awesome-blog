@@ -1,9 +1,9 @@
 import { defineConfig } from 'vitepress'
-import { getDirectoryStructure } from './sidebar.mjs'
-import { navBar } from './navbar.mjs'
+import { genSideBarConfig } from './sidebar.mjs'
+import { genNavBarConfig } from './navbar.mjs'
 import { writeAllFileItems2BlogIndex } from './blog.mjs'
 
-// 将全部文章写入到 blog/index.md
+// 将全部文章写入到 blog/all.md
 writeAllFileItems2BlogIndex()
 
 // https://vitepress.dev/reference/site-config
@@ -24,16 +24,16 @@ export default defineConfig({
 
     siteTitle:"Pandaer 杂货铺",
     // https://vitepress.dev/reference/default-theme-config
-    nav: navBar,
+    nav: genNavBarConfig("blog"),
 
-    sidebar: getDirectoryStructure("blog"),
+    sidebar: genSideBarConfig("blog"),
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/mPandaer/awesome-blog' }
     ],
     outline: {
       label:"大纲",
-      level:[1,6]
+      level:[2,5]
     },
     logo: ""
   }

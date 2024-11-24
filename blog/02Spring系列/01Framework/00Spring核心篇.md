@@ -28,7 +28,7 @@ public class StoreServiceImpl implements StoreService {
 
 对象是创建完毕了，那么这些对象应该放在哪里呢？答案是在一个Map中，这也就是为什么IOC容器中有容器这两个字了。
 
-![image](images/image.png)
+![image](../images/image.png)
 
 这个Map就是存在Spring创建Bean对象的地方，这样子的容器有三个，这里先不讨论。
 

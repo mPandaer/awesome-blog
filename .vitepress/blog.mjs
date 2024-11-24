@@ -1,36 +1,87 @@
 import fs from 'fs';
 import path from 'path'
+import {genLinkUrl, getDisplayName, isOnlyContainsFiles} from "./util.mjs";
 
-const itemMd = [`---\noutline: [2,5]\n---\n# 全部文章 \n`];
 
-const colorFlags = ['NOTE','TIP','IMPORTANT','WARNING','CAUTION']
-let index = 0;
+const filePattern =  /^(\d*)(.*)\.md$/
+const dirPattern = /^(\d*)(.*)$/
 
-export function getAllFiles(dir) {
-    let files = fs.readdirSync(dir, { withFileTypes: true });
-    files = files.filter(file => file.name !== "images")
-    files.forEach(file => {
-        if (file.isDirectory()) {
-            let dirPath =  path.join(dir, file.name)
-            const ranColorFlag = colorFlags[(index++) % colorFlags.length];
-            itemMd.push(`> [!${ranColorFlag}] # ${file.name}\n`);
-            getAllFiles(dirPath);
-            itemMd.push(`\n`);
-        }else if (!file.name.includes("index")) {
-            let fullPath = path.join(dir, file.name);
-            fullPath = fullPath.replaceAll(path.sep,"/").replace(path.extname(file.name),"")
-            let displayName = path.basename(file.name).replace(path.extname(file.name),"");
-            let mdStr = `> - [${displayName}](/${encodeURIComponent(fullPath)})\n`;
-            itemMd.push(mdStr);
+
+
+function createFileItem(dir) {
+    let readOptions = {withFileTypes: true};
+    let dirPath =  path.join(dir.parentPath, dir.name);
+    let files = fs.readdirSync(dirPath, readOptions).filter(file => file.isFile());
+    let items = files.map(file => {
+        return {
+            text: getDisplayName(file.name,filePattern),
+            link: genLinkUrl(file,dir)
         }
-    })
+    });
+
+    return {
+        text: getDisplayName(dir.name,dirPattern),
+        items: items,
+    }
+}
+
+// 假设 给定一个目录，根据该目录下的一级目录生成对应的对象
+function genAllFilesConfig(rootDir) {
+    // 获取到全部的一级目录
+    let readOptions = {withFileTypes: true};
+    let dirs = fs.readdirSync(rootDir,readOptions).filter((file) => file.isDirectory() && file.name !== "images");
+    if (dirs.length === 0) {
+        return [];
+    }
+    let res = [];
+    // 遍历这些一级目录
+    for (let dir of dirs) {
+        // 如果这个一级目录只有文件 就直接生成对应的对象
+        if (isOnlyContainsFiles(dir,"images")) {
+            let item = createFileItem(dir);
+            res.push(item);
+            continue;
+        }
+        // 如果没有就递归
+        let dirPath = path.join(dir.parentPath, dir.name);
+        let items = genAllFilesConfig(dirPath);
+        items.forEach(item => {
+            item.items.forEach(item => {
+                item.link = `/${path.basename(dir.parentPath)}${item.link}`;
+            })
+        })
+        let item = createFileItem(dir)
+        item.items.push(...items);
+        res.push(item);
+    }
+    return res;
+
 }
 
 
 
+
 export function writeAllFileItems2BlogIndex() {
-    getAllFiles('./blog')
-    // 将数据写入index文件
-    let indexDocMd = `${itemMd.join('')}`;
-    fs.writeFileSync('blog/index.md', indexDocMd);
+    let content = renderMarkdown(genAllFilesConfig("./blog"))
+    content = "# 全部文章\n\n" + content
+    fs.writeFileSync('blog/all.md', content);
+}
+
+function renderMarkdown(items, depth = 0) {
+    let markdown = '';
+
+    items.forEach(item => {
+        const indent = '  '.repeat(depth);
+
+        if (item.link) {
+            // 渲染叶子节点
+            markdown += `${indent}- [${item.text}](${item.link})\n`;
+        } else if (item.items) {
+            // 渲染非叶子节点
+            markdown += `${indent}- ${item.text}\n`;
+            markdown += renderMarkdown(item.items, depth + 1);
+        }
+    });
+
+    return markdown;
 }

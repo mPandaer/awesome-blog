@@ -10,7 +10,7 @@ outline: [2,5]
 
 ## 在官方文档消失不见的架构图
 
-![spring overview](images/spring-overview.png)
+![spring overview](../images/spring-overview.png)
 
 在最新的Spring官方文档中，这张架构图已经不见了。我们需要借助这张图去理解Spring有哪些重要的组件。这里我来一一介绍一下，我们从下往上看
 
@@ -57,7 +57,7 @@ Spring关于IOC的实现经过这么很多个版本的迭代，现在已经是�
 
 这就是Spring中IOC的核心流程，至于一些细枝末节，就得需要你自己跟踪一下源码了。下图是是IOC完整的流程图
 
-![image-20241011193547689](images/image-20241011193547689.png)
+![image-20241011193547689](../images/image-20241011193547689.png)
 
 ## 未完待续...
 
