@@ -3,6 +3,9 @@ import * as path from 'path';
 import {isOnlyContainsFiles} from "./util.mjs";
 
 
+
+const filePattern =  /^(\d*)_?(.*)\.md$/
+const dirPattern = /^(\d*)_?(.*)$/
 /**
  * 基于正则表达式 文件名规则排序 00hello 01haha
  * @param name1
@@ -28,7 +31,6 @@ function getFirstLinkInDir(dir) {
         withFileTypes: true,
     }
     let dirPath = path.join(dir.parentPath,dir.name);
-    let filePattern =  /^(\d*)(.*)\.md$/
     let fileNames = fs.readdirSync(dirPath,readOptions).filter(file => file.isFile() && filePattern.test(file.name)).map(file => file.name);
     fileNames = fileNames.sort((name1, name2) => {
         return sortWithPattern(name1,name2,filePattern);
@@ -65,7 +67,6 @@ export function genNavBarConfig(rootDir) {
     if (dirs.length === 0) {
         return [];
     }
-    let dirPattern =  /^(\d*)(.*)$/
     dirs.sort((dir1,dir2) => sortWithPattern(dir1.name,dir2.name,dirPattern));
     let res = []
 

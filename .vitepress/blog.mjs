@@ -3,8 +3,8 @@ import path from 'path'
 import {genLinkUrl, getDisplayName, isOnlyContainsFiles} from "./util.mjs";
 
 
-const filePattern =  /^(\d*)(.*)\.md$/
-const dirPattern = /^(\d*)(.*)$/
+const filePattern =  /^(\d*)_?(.*)\.md$/
+const dirPattern = /^(\d*)_?(.*)$/
 
 
 
