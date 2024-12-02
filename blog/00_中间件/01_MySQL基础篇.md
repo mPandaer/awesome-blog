@@ -224,7 +224,7 @@ MVCC 全称Multi-Version Concurrency Control，中文翻译多版本并发控制
 
 ## 推荐阅读
 
-1. MySQL实战45讲 基础篇
+1. [MySQL实战45讲 基础篇](https://time.geekbang.org/column/intro/100020801)
 2. [凤凰架构  本地事务](https://icyfenix.cn/architect-perspective/general-architecture/transaction/local.html)
 
 
