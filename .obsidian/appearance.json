@@ -1,0 +1,9 @@
+{
+  "cssTheme": "Things",
+  "interfaceFontFamily": "Microsoft YaHei UI",
+  "textFontFamily": "Microsoft YaHei",
+  "showViewHeader": true,
+  "enabledCssSnippets": [
+    "md-header"
+  ]
+}
