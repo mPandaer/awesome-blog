@@ -35,8 +35,13 @@ function getFirstLinkInDir(dir) {
     fileNames = fileNames.sort((name1, name2) => {
         return sortWithPattern(name1,name2,filePattern);
     })
+    if (fileNames.length === 0) {
+        //todo 兜底策略
+        return "/blog/all";
+    }
     // console.log("filenames",fileNames,"dir",dir.name)
     let firstName = fileNames[0];
+    console.log("navbar",firstName)
     firstName = firstName.replace(path.extname(firstName), '');
     // TODO 这里先写死 ./blog
     return `/${path.basename(dir.parentPath)}/${dir.name}/${firstName}`;

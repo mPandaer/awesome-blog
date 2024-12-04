@@ -21,6 +21,7 @@ export function getDisplayName(name, filePattern) {
 }
 
 export function genLinkUrl(file, dir) {
+    console.log("util",file.name)
     let fileName = file.name.replace(path.extname(file.name), "");
     return `/${path.basename(dir.parentPath)}/${dir.name}/${fileName}`;
 }
