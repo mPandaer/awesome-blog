@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "Pandaer Blog"
+  name: "Pandaer 杂货铺"
   text: ""
   tagline: "物有本末，事有终始，知所先后，则近道矣。"
   actions:
