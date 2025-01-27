@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { getSideBar } from './sidebar.mjs'
 import { getNavBar } from './navbar.mjs'
-
+import taskLists from 'markdown-it-task-lists'
 
 
 
@@ -20,7 +20,6 @@ export default defineConfig({
     ]
   ],
   themeConfig: {
-
     siteTitle: "Pandaer 杂货铺",
     // https://vitepress.dev/reference/default-theme-config
     nav: getNavBar('blog') as any,
@@ -35,5 +34,10 @@ export default defineConfig({
       level: [2, 5]
     },
     logo: ""
+  },
+  markdown: {
+    config: (md) => {
+      md.use(taskLists)
+    }
   }
 })

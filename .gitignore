@@ -2,3 +2,4 @@ node_modules
 .vitepress/cache/
 .idea
 .obsidian
+dist
