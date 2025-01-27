@@ -24,6 +24,8 @@ path includes TypeScript 基础
 ### 相关问题
 暂无
 
+## 基本类型
+...
 
 
 
