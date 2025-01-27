@@ -4,9 +4,6 @@ import { getDisplayName } from "./util.mjs";
 
 
 
-
-
-
 /**
  * 文件命名格式
  */
@@ -67,6 +64,3 @@ function getSideBarItem(dirPath, ...ignorePatterns) {
     }
     return items;
 }
-
-
-// console.log(getSideBar('blog'))
