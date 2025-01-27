@@ -12,7 +12,7 @@ const dirPattern = /^(\d*)_(.*)$/
 
 
 export function getSideBar(dirPath) {
-    console.log(dirPath)
+    // console.log(dirPath)
     const sideBar = {};
 
     const entries = fs.readdirSync(dirPath, { withFileTypes: true });
@@ -35,6 +35,7 @@ export function getSideBar(dirPath) {
 function getSideBarItem(dirPath, ...ignorePatterns) {
     const items = [];
     let entries = fs.readdirSync(dirPath, { withFileTypes: true });
+    entries = entries.filter(entry => entry.name !== 'images');
 
     // 过滤忽略的文件和目录
     entries = entries.filter(entry => {

@@ -13,12 +13,12 @@ const dirPattern = /^(\d*)_(.*)$/
 export function getNavBar(dirPath) {
     const navBar = [];
 
-    const dirs = fs.readdirSync(dirPath, { withFileTypes: true }).filter(file => file.isDirectory() && file.name !== "images");
+    const dirs = fs.readdirSync(dirPath, { withFileTypes: true }).filter(file => file.isDirectory() && file.name !== "images" &&  file.name !==".obsidian");
 
     for (const dir of dirs) {
         const displayName = getDisplayName(dir.name, dirPattern);
         const link = path.join(dirPath, dir.name).replace(/\\/g, '/');
-        navBar.push({ text: displayName, link: `/${link}/` });
+        navBar.push({ text: displayName, link: `/${link}/` ,activeMatch: `/${link}`});
     }
 
 

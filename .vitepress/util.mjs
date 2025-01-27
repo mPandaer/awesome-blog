@@ -21,7 +21,7 @@ export function getDisplayName(filename, pattern) {
     if (match && match[2]) {
         return match[2];  // 返回第二个捕获组，即去掉前缀和后缀的部分
     }
-    return filename;  // 如果匹配失败，返回原文件名
+    return filename.replace(path.extname(filename), "");  // 如果匹配失败，返回原文件名
 }
 
 export function genLinkUrl(file, dir) {
