@@ -32,7 +32,7 @@ export default defineConfig({
     ],
     outline: {
       label: "大纲",
-      level: [2, 5]
+      level: [1, 5]
     },
     logo: ""
   }
